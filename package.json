@@ -1,0 +1,11 @@
+{
+  "name": "slack-notifier",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "dependencies": {
+    "@slack/client": "^3.14.2"
+  }
+}
