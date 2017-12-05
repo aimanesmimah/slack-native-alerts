@@ -16,7 +16,7 @@ var config = require('./config');
 
 
 
-if(config.TOKEN) {
+if(config.TOKEN && config.OS) {
 
 
     var rtmClient = new RtmClient(config.TOKEN, { logLevel: 'error', dataStore: new MemoryDataStore() });
@@ -59,6 +59,17 @@ if(config.TOKEN) {
 
        var notificationMessage = user.name + " has just went " + status ;
 
+       switch (config.OS){
+           case 'win' :
+               windowsAlert(notificationMessage);
+               break;
+           case 'mac' :
+               macOSAlert(notificationMessage);
+               break;
+           default :
+               return ;
+       }
+
 
 
 
@@ -70,9 +81,12 @@ if(config.TOKEN) {
 
     rtmClient.start();
 }
+else if(config.H){
+    console.info(config.CONSOLE_MESSAGE);
+}
 
 else {
 
-    console.log(config.CONSOLE_MESSAGE);
+    console.info(config.CONSOLE_MESSAGE);
     process.exit();
 }
