@@ -5,6 +5,12 @@ var yargs = require('yargs');
 var RTM_EVENTS = require('@slack/client').RTM_EVENTS;
 var CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
 var RtmClient = require('@slack/client').RtmClient;
+var MemoryDataStore = require('@slack/client').MemoryDataStore;
+
+var WindowsBalloon = require('node-notifier').WindowsBalloon;
+var path = require('path');
+
+
 
 
 console.log(yargs.argv);
@@ -14,21 +20,22 @@ console.log(yargs.argv);
 var config = {
     TOKEN : yargs.argv.token ,
     MY_USERNAME : null,
-    CHANNEL :null
+    CHANNEL :null,
+    PRESENCE_USER_ID : null
 }
 
 
 if(config.TOKEN) {
 
 
-    var rtmClient = new RtmClient(config.TOKEN);
+    var rtmClient = new RtmClient(config.TOKEN, { logLevel: 'error', dataStore: new MemoryDataStore() });
     //console.log(rtmClient);
 
 
 
     rtmClient.on(CLIENT_EVENTS.RTM.AUTHENTICATED, (rtmDataStart) => {
 
-        //console.log(JSON.stringify(rtmDataStart));
+        config.MY_USERNAME = rtmDataStart.self.name;
         config.CHANNEL = rtmDataStart.channels[1].id;
     });
 
@@ -39,6 +46,47 @@ if(config.TOKEN) {
     rtmClient.on(CLIENT_EVENTS.RTM.RTM_CONNECTION_OPENED, () => {
         console.log(config.CHANNEL);
         //rtmClient.sendMessage('hello from nodejs client', channel);
+    });
+
+    rtmClient.on(RTM_EVENTS.PRESENCE_CHANGE , (data) => {
+       console.log('presence change',data);
+        var user = rtmClient.dataStore.getUserById(data.user);
+       let status ;
+       if(data.presence === 'away'){
+           status = 'offline' ;
+       }
+
+       if(data.presence === 'active'){
+           status = 'online'
+       }
+
+       if(config.MY_USERNAME === user.name){
+           user.name = "you" ;
+       }
+
+
+
+       var notificationMessage = user.name + " has just went " + status ;
+
+       var notifier = new WindowsBalloon({
+           withFallback : false// Defaults as 'Node'
+       });
+
+       var notification = {
+           title: 'Slack',
+           message:  notificationMessage,
+           wait : true
+       }
+
+       notifier.notify(notification,function (error,response) {
+           if(error)
+               return console.log(error);
+           console.log(response);
+           console.log('notifier');
+       });
+       console.log('node notifier');
+
+
     });
 
     rtmClient.start();
