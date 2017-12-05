@@ -7,9 +7,11 @@ var CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
 var RtmClient = require('@slack/client').RtmClient;
 var MemoryDataStore = require('@slack/client').MemoryDataStore;
 
-var WindowsBalloon = require('node-notifier').WindowsBalloon;
+var windowsAlert = require('./alert-windows');
+var macOSAlert = require('./alert-macOs');
 var path = require('path');
 
+var WindowsToaster = require('node-notifier/notifiers/toaster')
 
 
 
@@ -68,22 +70,8 @@ if(config.TOKEN) {
 
        var notificationMessage = user.name + " has just went " + status ;
 
-       var notifier = new WindowsBalloon({
-           withFallback : false// Defaults as 'Node'
-       });
+       //windowsAlert(notificationMessage);
 
-       var notification = {
-           title: 'Slack',
-           message:  notificationMessage,
-           wait : true
-       }
-
-       notifier.notify(notification,function (error,response) {
-           if(error)
-               return console.log(error);
-           console.log(response);
-           console.log('notifier');
-       });
        console.log('node notifier');
 
 
