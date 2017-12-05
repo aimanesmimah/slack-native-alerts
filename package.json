@@ -8,7 +8,6 @@
   "dependencies": {
     "@slack/client": "^3.14.2",
     "node-notifier": "^5.1.2",
-    "node.os": "^1.2.4",
     "path": "^0.12.7",
     "yargs": "^10.0.3"
   }
