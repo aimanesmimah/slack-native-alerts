@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 
-var yargs = require('yargs');
 
 var RTM_EVENTS = require('@slack/client').RTM_EVENTS;
 var CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
@@ -11,20 +10,10 @@ var windowsAlert = require('./alert-windows');
 var macOSAlert = require('./alert-macOs');
 var path = require('path');
 
-var WindowsToaster = require('node-notifier/notifiers/toaster')
+var config = require('./config');
 
 
 
-console.log(yargs.argv);
-
-
-
-var config = {
-    TOKEN : yargs.argv.token ,
-    MY_USERNAME : null,
-    CHANNEL :null,
-    PRESENCE_USER_ID : null
-}
 
 
 if(config.TOKEN) {
@@ -70,7 +59,9 @@ if(config.TOKEN) {
 
        var notificationMessage = user.name + " has just went " + status ;
 
-       //windowsAlert(notificationMessage);
+
+
+
 
        console.log('node notifier');
 
@@ -81,9 +72,7 @@ if(config.TOKEN) {
 }
 
 else {
-    const message = "HELP[!]\n--token : set your slack token, to get it go ahead to " +
-        "(https://api.slack.com/docs/oauth-test-tokens) and generate one using your team slack account";
 
-    console.log(message);
+    console.log(config.CONSOLE_MESSAGE);
     process.exit();
 }
