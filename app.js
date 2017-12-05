@@ -8,7 +8,6 @@ var MemoryDataStore = require('@slack/client').MemoryDataStore;
 
 var windowsAlert = require('./alert-windows');
 var macOSAlert = require('./alert-macOs');
-var path = require('path');
 
 var config = require('./config');
 
@@ -83,6 +82,7 @@ if(config.TOKEN && config.OS) {
 }
 else if(config.H){
     console.info(config.CONSOLE_MESSAGE);
+    process.exit()
 }
 
 else {
