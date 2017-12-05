@@ -1,5 +1,5 @@
 {
-  "name": "slack-desktop-alerts",
+  "name": "slack-native-alerts",
   "version": "0.0.1",
   "private": true,
   "scripts": {
