@@ -1,6 +1,6 @@
 ## slack-native-alerts
 
-[![npm version]
+[![npm version](https://badge.fury.io/js/slack-native-alerts.svg)](https://badge.fury.io/js/slack-native-alerts)
 
 Dipslay Desktop alerts that lets the user aware of slack users activity
 
