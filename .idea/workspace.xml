@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="84c64e62-2fb1-4fd4-8d16-92a21502fe0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -123,8 +122,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="277" />
-    <option name="y" value="76" />
+    <option name="x" value="158" />
+    <option name="y" value="80" />
     <option name="width" value="1110" />
     <option name="height" value="621" />
   </component>
@@ -213,15 +212,15 @@
       <workItem from="1512448522065" duration="7913000" />
       <workItem from="1512457551093" duration="2599000" />
       <workItem from="1512476441217" duration="3856000" />
-      <workItem from="1512522506420" duration="1066000" />
+      <workItem from="1512522506420" duration="1202000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36389000" />
+    <option name="totallyTimeSpent" value="36525000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="277" y="76" width="1110" height="621" extended-state="0" />
+    <frame x="158" y="80" width="1110" height="621" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21455224" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
