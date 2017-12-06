@@ -2,7 +2,7 @@
   "name": "slack-native-alerts",
   "version": "0.0.1",
   "private": true,
-  "author" : "ayman smimah",
+  "author" : "cloud strife",
   "scripts": {
     "start": "node ./app.js"
   },
